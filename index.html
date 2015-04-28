@@ -58,10 +58,24 @@
     var addText = $('.add_text');
 
       $('.submit').click(function(e){
-        var str = $('textarea').val();
         e.preventDefault();
+        var str = $('textarea').val();
+        var str_array = str.split('');
+        
+
+        for(var i = 0; i < str_array.length; i++) {
+          if(str_array[i] == '.') {
+            str_array.splice(i, 1, "...");
+          }
+          
+        }
+        console.log(str_array);
+
+        var new_str = str_array.join('');
+        console.log(new_str);
+        
         if (str !== '') {
-          $('.add_text').text(str)
+          $('.add_text').text(new_str)
         } else {
           alert('add some text...')
         }
